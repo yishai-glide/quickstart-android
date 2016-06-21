@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <bool name="com_appboy_push_gcm_messaging_registration_enabled">true</bool>
+    <string name="com_appboy_push_gcm_sender_id">365098207273</string>
+    <string name="com_appboy_api_key">4d82edca-2db5-4edc-812b-f2a34ae4c04d</string>
+
+</resources>

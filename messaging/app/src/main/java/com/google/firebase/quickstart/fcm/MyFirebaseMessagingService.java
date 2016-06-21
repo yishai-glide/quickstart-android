@@ -22,7 +22,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -31,6 +35,7 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
+
 
     /**
      * Called when message is received.
@@ -46,6 +51,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // message, here is where that should be initiated. See sendNotification method below.
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+        Log.d(TAG, "Notification Message Body: " + remoteMessage.getData().toString());
+        if (TextUtils.isEmpty("")) {
+            throw new NullPointerException("nothing cannot be nothing");
+        }
+    }
+
+    private void handleNotification(@NonNull final RemoteMessage remoteMessage) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("yishai", "parsing mesage");
+                Log.d("yishai", remoteMessage.getData().toString());
+            }
+        });
     }
     // [END receive_message]
 
